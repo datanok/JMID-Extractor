@@ -1,12 +1,10 @@
 import { useState } from "react";
 import Tesseract from "tesseract.js";
-import "./App.css";
-import Navbar from "./Navbar";
+
 import { Routes, Route } from "react-router-dom";
 import ImageConv from "./ImageConv";
-import JmConv from "./JmConv";
 
-function App() {
+function JmConv() {
   const [imagePath, setImagePath] = useState("");
   const [text, setText] = useState("");
 
@@ -52,14 +50,34 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<JmConv />} />
-        <Route path="/Image2text" element={<ImageConv />} />
-      </Routes>
-    </div>
+    <main className="flex flex-col">
+      {imagePath && <img src={imagePath} className="mx-auto mt-4" alt="logo" />}
+
+      <h3 className="text-xl font-bold text-white text-center my-4">
+        Extracted text
+      </h3>
+      <div className="text-box">
+        <p className="text-[#b8c1ec] text-lg text-center hover:font-bold">
+          {" "}
+          <a href={text}>{text} </a>
+        </p>
+      </div>
+      <input
+        class="block w-[50%] mx-auto my-5 text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        id="file_input"
+        type="file"
+        onChange={handleChange}
+      />
+
+      <button
+        onClick={handleClick}
+        className="bg-[#eebbc3] rounded-lg hover:bg-blue-200  hover:text-black w-32 mx-auto p-2"
+      >
+        {" "}
+        convert to text
+      </button>
+    </main>
   );
 }
 
-export default App;
+export default JmConv;
