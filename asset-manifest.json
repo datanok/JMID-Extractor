@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/JMID-Extractor/static/css/main.a136aaee.css",
-    "main.js": "/JMID-Extractor/static/js/main.e0563dcf.js",
-    "static/js/787.e42f0cd2.chunk.js": "/JMID-Extractor/static/js/787.e42f0cd2.chunk.js",
-    "index.html": "/JMID-Extractor/index.html",
-    "main.a136aaee.css.map": "/JMID-Extractor/static/css/main.a136aaee.css.map",
-    "main.e0563dcf.js.map": "/JMID-Extractor/static/js/main.e0563dcf.js.map",
-    "787.e42f0cd2.chunk.js.map": "/JMID-Extractor/static/js/787.e42f0cd2.chunk.js.map"
+    "main.css": "/static/css/main.a136aaee.css",
+    "main.js": "/static/js/main.135aa876.js",
+    "static/js/787.e42f0cd2.chunk.js": "/static/js/787.e42f0cd2.chunk.js",
+    "index.html": "/index.html",
+    "main.a136aaee.css.map": "/static/css/main.a136aaee.css.map",
+    "main.135aa876.js.map": "/static/js/main.135aa876.js.map",
+    "787.e42f0cd2.chunk.js.map": "/static/js/787.e42f0cd2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a136aaee.css",
-    "static/js/main.e0563dcf.js"
+    "static/js/main.135aa876.js"
   ]
 }
