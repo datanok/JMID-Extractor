@@ -1,12 +1,10 @@
 import { useState } from "react";
 import Tesseract from "tesseract.js";
-
-import { Routes, Route } from "react-router-dom";
-import ImageConv from "./ImageConv";
-
+import { AiOutlineCopy } from "react-icons/ai";
 function JmConv() {
   const [imagePath, setImagePath] = useState("");
   const [text, setText] = useState("");
+  const [rcText, setRcText] = useState("");
 
   const handleChange = (event) => {
     setImagePath(URL.createObjectURL(event.target.files[0]));
@@ -24,28 +22,18 @@ function JmConv() {
         let confidence = result.confidence;
         console.log(confidence);
 
-        console.log(result.data.text);
-        const inputString = result.data.text;
-        const meetingID = inputString.substring(12, 24).replace(/ /g, "");
+        const text = String(result.data.text).replace(/\n/g, " ");
+        const processedText = text.replace(/(\d)\s+(\d)/g, "$1$2");
+        console.log(processedText);
 
-        // Use a regular expression to extract the meeting ID and password
+        const meet = processedText.match(/Meeting ID:\s*(\S+)/)[1];
+        const pass = processedText.match(/Password:\s*(\S+)/)[1];
 
-        // Extract the meeting ID and password from the match object
+        const rclink = `https://rc.jiomeetpro.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
+        const link = `https://jiomeetpro.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
 
-        const password = inputString
-          .substring(35, 42)
-          .trim()
-          .replace(/[()]/g, "J");
-
-        // Print the extracted values
-        console.log(`Meeting ID: ${meetingID}`);
-        console.log(`Password: ${password}`);
-
-        const link = `https://jiomeetpro.jio.com/shortener?meetingId=${meetingID}&pwd=${password}`;
-
-        console.log(link);
-        navigator.clipboard.writeText(link);
         setText(link);
+        setRcText(rclink);
       });
   };
 
@@ -61,6 +49,23 @@ function JmConv() {
           {" "}
           <a href={text}>{text} </a>
         </p>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(text);
+          }}
+        >
+          {/* <AiOutlineCopy color="white" /> */}
+        </button>
+
+        <p className="text-[#b8c1ec] text-lg text-center hover:font-bold">
+          {" "}
+          <a href={rcText}>{rcText} </a>
+        </p>
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(rcText);
+          }}
+        ></button>
       </div>
       <input
         class="block w-[50%] mx-auto my-5 text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"

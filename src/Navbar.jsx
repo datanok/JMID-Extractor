@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "./jmlogo.png";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -14,13 +15,9 @@ function Navbar() {
           href="https://www.instagram.com/tanmayok/"
           className="flex items-center"
         >
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8 mr-3"
-            alt="Flowbite Logo"
-          />
+          <img src={logo} className="h-8 mr-3" alt="Flowbite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            tanmayyyy
+            JMID-Extractor
           </span>
         </a>
         <button
@@ -60,7 +57,7 @@ function Navbar() {
                 className="block py-2 pl-3 pr-4 text-white  rounded md:bg-transparent md:p-0 dark:text-white"
                 aria-current="page"
               >
-                Home
+                JM Converter
               </a>
             </li>
             <li>
