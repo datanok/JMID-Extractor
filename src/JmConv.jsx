@@ -1,10 +1,15 @@
 import { useState } from "react";
 import Tesseract from "tesseract.js";
-import { AiOutlineCopy } from "react-icons/ai";
+import React from "react";
+import MeetInfo from "./MeetInfo";
+
 function JmConv() {
   const [imagePath, setImagePath] = useState("");
   const [text, setText] = useState("");
   const [rcText, setRcText] = useState("");
+  const [meet, setMeet] = useState("");
+  const [pass, setPass] = useState("");
+  const [info, showInfo] = useState(false);
 
   const handleChange = (event) => {
     setImagePath(URL.createObjectURL(event.target.files[0]));
@@ -34,9 +39,11 @@ function JmConv() {
 
         setText(link);
         setRcText(rclink);
+        setMeet(meet);
+        setPass(pass);
+        showInfo(true);
       });
   };
-
   return (
     <main className="flex flex-col">
       {imagePath && <img src={imagePath} className="mx-auto mt-4" alt="logo" />}
@@ -53,14 +60,13 @@ function JmConv() {
           onClick={() => {
             navigator.clipboard.writeText(text);
           }}
-        >
-          {/* <AiOutlineCopy color="white" /> */}
-        </button>
+        ></button>
 
         <p className="text-[#b8c1ec] text-lg text-center hover:font-bold">
           {" "}
           <a href={rcText}>{rcText} </a>
         </p>
+        {info ? <MeetInfo mId={meet} pass={pass} /> : <React.Fragment />}
         <button
           onClick={() => {
             navigator.clipboard.writeText(rcText);
