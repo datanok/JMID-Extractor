@@ -1,6 +1,6 @@
 {
   "name": "jmid-extractor",
-  "homepage": "https://datanok.github.io",
+  "homepage": "https://datanok.github.io/JMID-Extractor",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
