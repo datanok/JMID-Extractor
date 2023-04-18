@@ -1,6 +1,6 @@
 {
   "name": "image2text",
-  "homepage": "https://datanok.github.io/JMIDExtractor",
+  "homepage": "https://datanok.github.io/image2text",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
