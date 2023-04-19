@@ -2,7 +2,7 @@ import { useState } from "react";
 import Tesseract from "tesseract.js";
 import React from "react";
 import MeetInfo from "./MeetInfo";
-
+import Spinner from "./Spinner";
 function JmConv() {
   const [imagePath, setImagePath] = useState("");
   const [text, setText] = useState("");
@@ -10,12 +10,16 @@ function JmConv() {
   const [meet, setMeet] = useState("");
   const [pass, setPass] = useState("");
   const [info, showInfo] = useState(false);
+  const [spinner,setSpinner]= useState(false);
+  const [submit,setSubmit]= useState(false);
 
   const handleChange = (event) => {
     setImagePath(URL.createObjectURL(event.target.files[0]));
+    setSubmit(true);
   };
 
   const handleClick = () => {
+    setSpinner(true);
     Tesseract.recognize(imagePath, "eng", {
       logger: (m) => console.log(m),
     })
@@ -42,37 +46,27 @@ const pass = processedText.match(/Password\s*:\s*(\S+)/)[1];
         setMeet(meet);
         setPass(pass);
         showInfo(true);
+        setSpinner(false);
       });
   };
   return (
     <main className="flex flex-col">
-      {imagePath && <img src={imagePath} className="mx-auto mt-4" alt="logo" />}
+      {imagePath && <img src={imagePath} className="mx-auto mt-4 max-h-[400px]" alt="logo" />}
 
       <h3 className="text-xl font-bold text-white text-center my-4">
         Extracted text
       </h3>
-      <div className="text-box">
-        <p className="text-[#b8c1ec] text-lg text-center hover:font-bold">
-          {" "}
-          <a href={text}>{text} </a>
-        </p>
-        <button
-          onClick={() => {
-            navigator.clipboard.writeText(text);
-          }}
-        ></button>
+      {spinner ?(<Spinner/>):(<div className="text-box">
+       
 
-        <p className="text-[#b8c1ec] text-lg text-center hover:font-bold">
-          {" "}
-          <a href={rcText}>{rcText} </a>
-        </p>
-        {info ? <MeetInfo mId={meet} pass={pass} /> : <React.Fragment />}
+       
+        {info ? <MeetInfo mId={meet} pass={pass} text={text} rcText={rcText}/> : <React.Fragment />}
         <button
           onClick={() => {
             navigator.clipboard.writeText(rcText);
           }}
         ></button>
-      </div>
+      </div>)}
       <input
         class="block w-[50%] mx-auto my-5 text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
         id="file_input"
@@ -80,13 +74,13 @@ const pass = processedText.match(/Password\s*:\s*(\S+)/)[1];
         onChange={handleChange}
       />
 
-      <button
+  {submit? (    <button
         onClick={handleClick}
         className="bg-[#eebbc3] rounded-lg hover:bg-blue-200  hover:text-black w-32 mx-auto p-2"
       >
         {" "}
         convert to text
-      </button>
+      </button>):<React.Fragment/>}
     </main>
   );
 }

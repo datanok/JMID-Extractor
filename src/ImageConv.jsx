@@ -2,6 +2,7 @@ import { useState } from "react";
 import Tesseract from "tesseract.js";
 import "./App.css";
 import Navbar from "./Navbar";
+import Spinner from "./Spinner";
 
 function ImageConv() {
   const [imagePath, setImagePath] = useState("");
@@ -19,10 +20,9 @@ function ImageConv() {
         console.error(err);
       })
       .then((result) => {
-        // Get Confidence score
+ 
         let confidence = result.confidence;
-        console.log(confidence);
-
+    
         console.log(result.data.text);
         const text = result.data.text;
 
@@ -37,10 +37,10 @@ function ImageConv() {
 
   return (
     <main className="flex flex-col">
-      {imagePath && <img src={imagePath} className="mx-auto mt-4" alt="logo" />}
+      {imagePath && <img src={imagePath} className="mx-auto mt-4 max-h-34" alt="logo" />}
 
       <h3 className="text-xl font-bold text-white text-center my-4">
-        Extracted text
+        Extracted texttt
       </h3>
       <div className="text-box">
         <p className="text-[#b8c1ec] text-lg text-center hover:font-bold">
@@ -62,6 +62,7 @@ function ImageConv() {
         {" "}
         convert to text
       </button>
+      <Spinner/>
     </main>
   );
 }
