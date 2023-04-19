@@ -31,8 +31,8 @@ function JmConv() {
         const processedText = text.replace(/(\d)\s+(\d)/g, "$1$2");
         console.log(processedText);
 
-        const meet = processedText.match(/Meeting ID:\s*(\S+)/)[1];
-        const pass = processedText.match(/Password:\s*(\S+)/)[1];
+        const meet = processedText.match(/MeetingID\s*:\s*(\S+)/)[1];
+const pass = processedText.match(/Password\s*:\s*(\S+)/)[1];
 
         const rclink = `https://rc.jiomeetpro.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
         const link = `https://jiomeetpro.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
