@@ -1,7 +1,7 @@
 import { AiOutlineCopy } from "react-icons/ai";
 import toast, { Toaster } from "react-hot-toast";
 
-export default function MeetInfo({ mId, pass,text,rcText }) {
+export default function MeetInfo({ mId, pass, text, rcText }) {
   const handleMeetCopy = () => {
     navigator.clipboard.writeText(mId);
 
@@ -32,22 +32,21 @@ export default function MeetInfo({ mId, pass,text,rcText }) {
     });
   };
 
-
   return (
     <div>
-      <div className="mt-2">
+      <div className="mt-4">
         <Toaster />
       </div>
       <div class="relative mb-4 flex flex-wrap items-stretch justify-center">
         <input
           type="text"
-          class="w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
+          class="w-[80%] md:w-[40%]  rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
           value={text}
           readOnly
-          onClick={()=> {
+          onClick={() => {
             window.open(
-            text,
-              '_blank' // <- This is what makes it open in a new window.
+              text,
+              "_blank" // <- This is what makes it open in a new window.
             );
           }}
         />
@@ -56,7 +55,6 @@ export default function MeetInfo({ mId, pass,text,rcText }) {
           data-te-ripple-init
           type="button"
           onClick={handlelinkCopy}
-          
         >
           <AiOutlineCopy size={18} />
         </button>
@@ -64,7 +62,7 @@ export default function MeetInfo({ mId, pass,text,rcText }) {
       <div class="relative mb-4 flex flex-wrap items-stretch justify-center">
         <input
           type="text"
-          class="w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
+          class="w-[80%] md:w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
           value={rcText}
           readOnly
         />
@@ -80,7 +78,7 @@ export default function MeetInfo({ mId, pass,text,rcText }) {
       <div class="relative mb-4 flex flex-wrap items-stretch justify-center">
         <input
           type="text"
-          class="w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
+          class="w-[80%] md:w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
           value={mId}
           readOnly
         />
@@ -96,7 +94,7 @@ export default function MeetInfo({ mId, pass,text,rcText }) {
       <div class="relative mb-4 flex flex-wrap items-stretch justify-center">
         <input
           type="text"
-          class="w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
+          class="w-[80%] md:w-[40%] rounded-l border border-solid border-neutral-300 bg-gray-300 px-3 py-[0.25rem] text-black font-normal leading-[1.6]  outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:font-bold focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none "
           value={pass}
           readOnly
         />
