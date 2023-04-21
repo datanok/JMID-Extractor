@@ -44,8 +44,9 @@ function JmConv() {
         const text = String(result.data.text).replace(/\n/g, " ");
         const processedText = text.replace(/(\d)\s+(\d)/g, "$1$2");
         console.log(processedText);
-        const regex = /Meeting ID:\s*(\d+)\s*Password:\s*(\w+)/;
+        const regex = /MeetingID?\s*:\s*(\d+)\s*Password\s*:\s*([\w\d]+)/;
         const match = processedText.match(regex);
+        console.log(match);
         var meet;
         var pass;
 
@@ -57,7 +58,7 @@ function JmConv() {
           console.log("No match found");
         }
 
-        const rclink = `https://rc.jiomeetpro.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
+        const rclink = `https://rc.jiomeet.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
         const link = `https://jiomeetpro.jio.com/shortener?meetingId=${meet}&pwd=${pass}`;
 
         setText(link);
@@ -72,7 +73,7 @@ function JmConv() {
   return (
     <main className="flex flex-col">
       {imagePath && (
-        <img src={imagePath} className=" mx-6 mt-4 max-h-[400px]" alt="logo" />
+        <img src={imagePath} className=" mx-auto mt-4 max-h-[400px]" alt="logo" />
       )}
 
       {spinner ? (
